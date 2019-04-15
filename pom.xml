@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.seth.norm</groupId>
+	<artifactId>norm</artifactId>
+	<version>1.0.0</version>
+	<!--父模块打包类型必须为pom-->
+	<packaging>pom</packaging>
+
+	<properties>
+		<!--依赖版本号管理-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<modules>
+		<module>norm_utils</module>
+		<module>norm_cms</module>
+		<module>norm_dao</module>
+		<module>norm_component</module>
+		<module>norm_service</module>
+		<module>norm_rpc</module>
+		<module>norm_api</module>
+	</modules>
+
+	<!-- 作为父工程将项目的依赖进行基本的搭建 -->
+	<dependencies>
+
+	</dependencies>
+
+	<!--统一插件配置版本管理 TODO-->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<!--指定编译时的jdk版本1.8 -->
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.seth.norm</groupId>
+        <artifactId>norm</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.seth.norm</groupId>
+    <artifactId>norm_cms</artifactId>
+    <version>1.0.0</version>
+
+    <dependencies>
+        <!--引入norm依赖-->
+        <dependency>
+            <groupId>com.seth.norm</groupId>
+            <artifactId>norm_utils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.seth.norm</groupId>
+            <artifactId>norm_dao</artifactId>
+            <version>1.0.0</version>
+            <!-- 无需二次加载utils包 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.seth.norm</groupId>
+                    <artifactId>norm_utils</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- springboot依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
+            <version>2.1.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.1.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- spring开发组件，比如热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>2.1.1.RELEASE</version>
+            <scope>runtime</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--热加载 -->
+                <configuration>
+                    <!--如果没有fork配置,devtools不起作用，即项目修改后不会重新启动 -->
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+        <!-- 使用IDEA开发工具时，需要加上该resources配置，解决webapp/资源目录无效的问题 -->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<filtering>true</filtering>-->
+                <!--<excludes>-->
+                    <!--<exclude>static/fonts/**</exclude>-->
+                <!--</excludes>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<filtering>false</filtering>-->
+                <!--<includes>-->
+                    <!--<include>static/fonts/**</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        <!--</resources>-->
+    </build>
+
+</project>
